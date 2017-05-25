@@ -1,4 +1,5 @@
-import java.awt.Color;
+
+
 import java.awt.Container;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -54,6 +55,9 @@ public class Game {
 		
 		con.add(titleNamePanel);//Base layer
 		con.add(startButtonPanel);//Button layer
+		startButton.setMnemonic(KeyEvent.VK_D);
+		 startButton.setActionCommand("disable");
+
 		
 		
 	}
