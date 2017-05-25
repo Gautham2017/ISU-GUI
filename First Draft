@@ -1,13 +1,20 @@
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Game {
 	
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel;
+	JPanel titleNamePanel, startButtonPanel;
+	JLabel titleNameLabel;
+	Font titleFont = new Font("Times New Roman", Font.PLAIN, 73);
+	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+	JButton startButton;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,7 +33,29 @@ public class Game {
 		
 		titleNamePanel = new JPanel();//Panel initialization 
 		titleNamePanel.setBounds(100, 100, 600, 150);//Size of panel
-		titleNamePanel.setBackground(Color.blue);//Colour of panel
+		titleNamePanel.setBackground(Color.black);//Colour of panel
+		titleNameLabel = new JLabel("Zombie Apocalypse");//Text for title to be placed on panel
+		titleNameLabel.setForeground(Color.white);//Colour of Text
+		titleNameLabel.setFont(titleFont);//Apply font to text
+		
+		startButtonPanel = new JPanel();//Initialization of button frame
+		startButtonPanel.setBounds(300, 400, 200, 100);//Size of button frame
+		startButtonPanel.setBackground(Color.black);//Colour of button frame
+		
+		startButton = new JButton("Begin Game");//Button initialization 
+		startButton.setBackground(Color.black);//Colour of button backgraound
+		startButton.setForeground(Color.white);//Colour of text on top of button
+		startButton.setFont(normalFont);//Apply font to button text
+		startButton.setFocusPainted(false);//Disable button focus
+		//Alternate way to remove focus: "startButton.setFocusable(false);"
+		
+		titleNamePanel.add(titleNameLabel);//Place text on Panel
+		startButtonPanel.add(startButton);//Place button on panel
+		
 		con.add(titleNamePanel);//Base layer
+		con.add(startButtonPanel);//Button layer
+		
+		
 	}
 }
+
