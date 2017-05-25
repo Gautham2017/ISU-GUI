@@ -1,19 +1,26 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Game {
 	
-	JFrame window;
+	static JFrame window, window1;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel;
-	JLabel titleNameLabel;
-	Font titleFont = new Font("Times New Roman", Font.PLAIN, 73);
-	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+	static Container con1;
+	static JPanel titleNamePanel,titleNamepanel1, startButtonPanel;
+	static JLabel titleNameLabel,titleNameLabel1 ;
+	static JTextField opening = new JTextField("");
+	static Font titleFont = new Font("Times New Roman", Font.PLAIN, 73);
+	static Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
 	JButton startButton;
 
 	public static void main(String[] args) {
@@ -43,7 +50,7 @@ public class Game {
 		startButtonPanel.setBackground(Color.black);//Colour of button frame
 		
 		startButton = new JButton("Begin Game");//Button initialization 
-		startButton.setBackground(Color.black);//Colour of button backgraound
+		startButton.setBackground(Color.black);//Colour of button background
 		startButton.setForeground(Color.white);//Colour of text on top of button
 		startButton.setFont(normalFont);//Apply font to button text
 		startButton.setFocusPainted(false);//Disable button focus
@@ -54,8 +61,34 @@ public class Game {
 		
 		con.add(titleNamePanel);//Base layer
 		con.add(startButtonPanel);//Button layer
+		startButton.setMnemonic(KeyEvent.VK_D);
+		 startButton.setActionCommand("disable");
+		 startButton.addActionListener(new Action());//allows button to access code below
+	}
+		 static class Action implements ActionListener{
+			 public void actionPerformed (ActionEvent e) {
+				window1 = new JFrame();
+				window1.setSize(800,600);//Size of window
+				window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Able to close program
+				window1.getContentPane().setBackground(Color.black);//Colour of window
+				window1.setLayout(null);//Disable default layout for game
+				window1.setVisible(true);//To see the window
+				con1 = window1.getContentPane();//Base layer
+				titleNamepanel1 = new JPanel();//Panel initialization 
+				titleNamepanel1.setBounds(20, 20, 780, 500);//Size of panel
+				titleNamepanel1.setBackground(Color.black);//Colour of panel
+				titleNamepanel1.add(opening);//adding textfield
+				opening.setForeground(Color.white);//setting colour
+				opening.setFont(normalFont);//font style
+				opening.setBounds(20,20,700 ,700);//textbox size
+				window1.add(titleNamepanel1);//adding the panel to the frame
+				
+				
+			
+		 }
 		
 		
 	}
 }
+
 
